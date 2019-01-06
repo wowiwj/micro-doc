@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/micro_doc
+    username: wangju
+    driver-class-name: org.postgresql.Driver
+mybatis:
+  mapper-locations: classpath:wangju/microdoc/mapper/*.xml
+  type-aliases-package: wangju.microdoc.domain
+  type-handlers-package: wangju.microdoc.typehandler
+
