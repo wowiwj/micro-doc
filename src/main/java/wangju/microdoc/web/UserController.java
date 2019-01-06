@@ -4,9 +4,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import wangju.microdoc.annotation.JwtAuth;
 import wangju.microdoc.domain.User;
 import wangju.microdoc.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +35,10 @@ public class UserController {
         return new User();
     }
 
+    @JwtAuth
     @GetMapping("/{id}")
-    User one(@PathVariable Long id) {
+    User one(@PathVariable Long id, HttpServletRequest request) {
+        request.getAttribute("currentUser");
         User user = userService.getUser(id);
         logger.info(String.valueOf(user.getPassword()));
         return user;
