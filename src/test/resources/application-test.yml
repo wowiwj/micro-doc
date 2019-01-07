@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+mybatis:
+  mapper-locations: classpath:wangju/microdoc/mapper/*.xml
+  type-aliases-package: wangju.microdoc.domain
+  type-handlers-package: wangju.microdoc.typehandler
