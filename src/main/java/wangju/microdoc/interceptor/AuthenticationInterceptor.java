@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 
+@Log
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Autowired
@@ -71,6 +73,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             request.setAttribute("currentUser",user);
             return true;
         }
+
+        log.info("sdafafaf----");
 
         return true;
     }

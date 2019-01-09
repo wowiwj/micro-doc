@@ -26,4 +26,12 @@ public class UserRepositoryTest {
         assertEquals("哈哈哈",user.getBio());
         assertEquals(SexEnum.MALE,user.getSex());
     }
+
+
+    @Test
+    public void getUserByUsername() {
+        User user = userRepository.getUserByUsername("dufu");
+        assertEquals("哈哈哈",user.getBio());
+
+    }
 }
