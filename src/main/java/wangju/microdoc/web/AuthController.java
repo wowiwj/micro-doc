@@ -3,6 +3,7 @@ package wangju.microdoc.web;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +40,6 @@ public class AuthController {
         String password = loginForm.getPassword();
 
         User user = authService.check(username,password);
-
         if (user == null){
             throw new RuntimeException("401");
         }

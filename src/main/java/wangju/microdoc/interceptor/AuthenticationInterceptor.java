@@ -73,9 +73,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             request.setAttribute("currentUser",user);
             return true;
         }
-
-        log.info("sdafafaf----");
-
         return true;
     }
 
