@@ -1,6 +1,7 @@
 package wangju.microdoc.service.impl;
 
 import lombok.extern.java.Log;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import wangju.microdoc.annotation.JwtAuth;
@@ -28,7 +29,7 @@ public class AuthServiceImpl implements AuthService {
         log.info(user.getPassword());
         log.info(password);
 
-        if (user.getPassword().equals(password)){
+        if (BCrypt.checkpw(password,user.getPassword())){
             return user;
         }
         return null;
