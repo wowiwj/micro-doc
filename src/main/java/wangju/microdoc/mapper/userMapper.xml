@@ -3,15 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="wangju.microdoc.domain.UserRepository">
-    <select id="getUser" parameterType="long" resultType="user">
+
+    <select id="get" parameterType="long" resultType="user">
         select id, username, password, sex, bio
         from "user"
         where id = #{id}
     </select>
 
-    <select id="getUserByUsername" parameterType="string" resultType="user">
+    <select id="getByName" parameterType="string" resultType="user">
         select id, username, password, sex, bio
         from "user"
         where username = #{username}
     </select>
+
+    <insert id="create" parameterType="wangju.microdoc.domain.User">
+        insert into "user" (username, password, bio, last_active_time)
+        VALUES (#{username}, #{password}, #{bio}, #{lastActiveTime})
+    </insert>
+
 </mapper>

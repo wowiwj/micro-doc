@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository {
 
-    public User getUser(Long id);
+    public User get(Long id);
 
-    public User getUserByUsername(String username);
+    public User getByName(String username);
+
+    int create(User user);
 }

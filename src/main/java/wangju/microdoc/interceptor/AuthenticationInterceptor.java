@@ -58,7 +58,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 throw new RuntimeException("401");
             }
 
-            User user = userService.getUser(Long.valueOf(userId));
+            User user = userService.get(Long.valueOf(userId));
             if (user == null){
                 throw new RuntimeException("401");
             }

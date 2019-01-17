@@ -19,7 +19,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public User check(String username, String password) {
 
-        User user = userRepository.getUserByUsername(username);
+        User user = userRepository.getByName(username);
         if (user == null){
             return  null;
         }

@@ -1,3 +1,4 @@
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/micro_doc
@@ -7,4 +8,5 @@ mybatis:
   mapper-locations: classpath:wangju/microdoc/mapper/*.xml
   type-aliases-package: wangju.microdoc.domain
   type-handlers-package: wangju.microdoc.typehandler
-
+server:
+  port: 9898

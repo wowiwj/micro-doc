@@ -39,7 +39,7 @@ public class UserController {
     @GetMapping("/{id}")
     User one(@PathVariable Long id, HttpServletRequest request) {
         request.getAttribute("currentUser");
-        User user = userService.getUser(id);
+        User user = userService.get(id);
         logger.info(String.valueOf(user.getPassword()));
         return user;
     }

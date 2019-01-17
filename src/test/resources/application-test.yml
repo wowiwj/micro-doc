@@ -14,3 +14,4 @@ mybatis:
   mapper-locations: classpath:wangju/microdoc/mapper/*.xml
   type-aliases-package: wangju.microdoc.domain
   type-handlers-package: wangju.microdoc.typehandler
+

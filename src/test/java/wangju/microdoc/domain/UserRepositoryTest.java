@@ -21,7 +21,7 @@ public class UserRepositoryTest {
 
     @Test
     public void getUser() {
-        User user = userRepository.getUser(1L);
+        User user = userRepository.get(1L);
         assertEquals("dufu",user.getUsername());
         assertEquals("哈哈哈",user.getBio());
         assertEquals(SexEnum.MALE,user.getSex());
@@ -30,7 +30,7 @@ public class UserRepositoryTest {
 
     @Test
     public void getUserByUsername() {
-        User user = userRepository.getUserByUsername("dufu");
+        User user = userRepository.getByName("dufu");
         assertEquals("哈哈哈",user.getBio());
 
     }

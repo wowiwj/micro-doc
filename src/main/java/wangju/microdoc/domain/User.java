@@ -9,6 +9,8 @@ import lombok.Data;
 import org.apache.ibatis.type.Alias;
 import wangju.microdoc.enumeration.SexEnum;
 
+import java.sql.Time;
+
 @Alias("user")
 @Data
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
