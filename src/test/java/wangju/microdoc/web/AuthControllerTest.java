@@ -51,6 +51,7 @@ public class AuthControllerTest {
         String  content = mvcResult.getResponse().getContentAsString();
         log.info(content);
         JSONObject result = JSONObject.parseObject(content);
-        assertNotNull(result.get("token"));
+
+        assertNotNull(result.getJSONObject("data").get("token"));
     }
 }
