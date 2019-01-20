@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.ResponseEntity;
 
+import java.util.ArrayList;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,7 +15,7 @@ public class ApiResp {
 
     private Integer status = 200;
     private Object message = "ok";
-    private Object data = new byte[0];
+    private Object data = new int[0];
 
     public static ApiResp init() {
         return new ApiResp();

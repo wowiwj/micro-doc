@@ -17,8 +17,6 @@ import wangju.microdoc.validators.LoginForm;
 import wangju.microdoc.validators.RegisterForm;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
