@@ -1,6 +1,7 @@
 package wangju.microdoc.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import wangju.microdoc.exception.UnauthorizedException;
+import wangju.microdoc.utils.ApiResp;
 
 import java.util.List;
 
@@ -21,14 +24,17 @@ public class GlobalExceptionHandler {
         if (msg == null || msg.equals("")) {
             msg = "服务器出错";
         }
-        JSONObject result = new JSONObject();
-        result.put("message", msg);
-        return result;
+        return ApiResp.err(msg);
+    }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    public Object handleUnAuthorizedException() {
+        return ApiResp.err("未授权", 401);
     }
 
     @ExceptionHandler(BindException.class)
     public Object validateException(BindException e) {
-        List<ObjectError> errors =   e.getAllErrors();
+        List<ObjectError> errors = e.getAllErrors();
         Object[] messageErr = errors.stream().map(err -> {
             FieldError fieldError = (FieldError) err;
             String message = "";
@@ -37,10 +43,7 @@ public class GlobalExceptionHandler {
             message += fieldError.getDefaultMessage();
             return message;
         }).toArray();
-
-        JSONObject result = new JSONObject();
-        result.put("message", messageErr);
-        return result;
+        return ApiResp.err(messageErr,422);
     }
 
 }

@@ -4,11 +4,11 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.extern.java.Log;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import wangju.microdoc.domain.User;
+import wangju.microdoc.exception.UnauthorizedException;
 import wangju.microdoc.service.AuthService;
 import wangju.microdoc.service.TokenService;
 import wangju.microdoc.service.UserService;
@@ -17,6 +17,8 @@ import wangju.microdoc.validators.LoginForm;
 import wangju.microdoc.validators.RegisterForm;
 
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
@@ -42,13 +44,14 @@ public class AuthController {
 
         User user = authService.check(username, password);
         if (user == null) {
-            throw new RuntimeException("401");
+            throw new UnauthorizedException();
         }
         String token = tokenService.getToken(user);
-        JSONObject result = new JSONObject();
-        result.put("token", token);
-        result.put("user", user);
-        return result;
+
+        JSONObject data = new JSONObject();
+        data.put("token", token);
+        data.put("user", user);
+        return ApiResp.body(data);
     }
 
     @PostMapping("/register")
@@ -64,7 +67,7 @@ public class AuthController {
         String password = BCrypt.hashpw(registerForm.getPassword(),BCrypt.gensalt());
         log.info(password);
         user.setPassword(password);
-        int result = userService.create(user);
+        userService.create(user);
         return ApiResp.ok("创建成功");
     }
 }

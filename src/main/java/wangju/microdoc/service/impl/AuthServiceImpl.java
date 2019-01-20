@@ -29,7 +29,13 @@ public class AuthServiceImpl implements AuthService {
         log.info(user.getPassword());
         log.info(password);
 
-        if (BCrypt.checkpw(password,user.getPassword())){
+        boolean checked = false;
+        try {
+            checked = BCrypt.checkpw(password,user.getPassword());
+        }catch (Exception e){
+            return null;
+        }
+        if (checked){
             return user;
         }
         return null;
