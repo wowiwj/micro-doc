@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import wangju.microdoc.dto.PageDTO;
 
 @Data
 @AllArgsConstructor
@@ -63,13 +64,7 @@ public class Response {
 
     private Object format(Object data) {
         if (data instanceof Page) {
-            JSONObject json = new JSONObject();
-            json.put("content", data);
-            json.put("total", ((Page) data).getTotal());
-            json.put("size", ((Page) data).getPageSize());
-            json.put("limit", ((Page) data).getPageNum());
-            json.put("pages",((Page) data).getPages());
-            return json;
+            return PageDTO.transform((Page) data);
         }
         return data;
     }
