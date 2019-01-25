@@ -11,7 +11,7 @@ spring:
     console:
       enabled: true
 mybatis:
-  mapper-locations: classpath:wangju/microdoc/mapper/*.xml
+  mapper-locations: classpath*:/mybatis/*Mapper.xml
   type-aliases-package: wangju.microdoc.domain
   type-handlers-package: wangju.microdoc.typehandler
 

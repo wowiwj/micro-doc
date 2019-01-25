@@ -12,6 +12,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import wangju.microdoc.annotation.JwtAuth;
 import wangju.microdoc.annotation.PassToken;
 import wangju.microdoc.domain.User;
+import wangju.microdoc.exception.UnauthorizedException;
 import wangju.microdoc.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +27,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        System.out.println("》》》》》 进入的拦截器");
 
         String token = request.getHeader("token");
         if (!(handler instanceof HandlerMethod)) {
@@ -48,26 +48,26 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 return true;
             }
             if (token == null) {
-                throw new RuntimeException("401");
+                throw new UnauthorizedException();
             }
 
             String userId;
             try {
                 userId = JWT.decode(token).getAudience().get(0);
             }catch (JWTDecodeException e){
-                throw new RuntimeException("401");
+                throw new UnauthorizedException();
             }
 
             User user = userService.get(Long.valueOf(userId));
             if (user == null){
-                throw new RuntimeException("401");
+                throw new UnauthorizedException();
             }
 
             JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getPassword())).build();
             try {
                 jwtVerifier.verify(token);
             }catch (JWTVerificationException e){
-                throw new RuntimeException("401");
+                throw new UnauthorizedException();
             }
 
             request.setAttribute("currentUser",user);

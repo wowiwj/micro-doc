@@ -1,16 +1,12 @@
 package wangju.microdoc.interceptor;
 
-import com.alibaba.fastjson.JSONObject;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import wangju.microdoc.exception.UnauthorizedException;
-import wangju.microdoc.utils.ApiResp;
+import wangju.microdoc.utils.Response;
 
 import java.util.List;
 
@@ -24,12 +20,12 @@ public class GlobalExceptionHandler {
         if (msg == null || msg.equals("")) {
             msg = "服务器出错";
         }
-        return ApiResp.err(msg);
+        return Response.err(msg);
     }
 
     @ExceptionHandler(UnauthorizedException.class)
     public Object handleUnAuthorizedException() {
-        return ApiResp.err("未授权", 401);
+        return Response.err("未授权", 401);
     }
 
     @ExceptionHandler(BindException.class)
@@ -43,7 +39,7 @@ public class GlobalExceptionHandler {
             message += fieldError.getDefaultMessage();
             return message;
         }).toArray();
-        return ApiResp.err(messageErr,422);
+        return Response.err(messageErr,422);
     }
 
 }

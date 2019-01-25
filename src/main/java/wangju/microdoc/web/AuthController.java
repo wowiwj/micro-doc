@@ -12,7 +12,7 @@ import wangju.microdoc.exception.UnauthorizedException;
 import wangju.microdoc.service.AuthService;
 import wangju.microdoc.service.TokenService;
 import wangju.microdoc.service.UserService;
-import wangju.microdoc.utils.ApiResp;
+import wangju.microdoc.utils.Response;
 import wangju.microdoc.validators.LoginForm;
 import wangju.microdoc.validators.RegisterForm;
 
@@ -49,7 +49,7 @@ public class AuthController {
         JSONObject data = new JSONObject();
         data.put("token", token);
         data.put("user", user);
-        return ApiResp.body(data);
+        return Response.body(data);
     }
 
     @PostMapping("/register")
@@ -58,7 +58,7 @@ public class AuthController {
         String username = registerForm.getUsername();
         User user = userService.get(username);
         if (user != null){
-            return ApiResp.err("用户已存在");
+            return Response.err("用户已存在");
         }
         user = new User();
         user.setUsername(username);
@@ -66,6 +66,6 @@ public class AuthController {
         log.info(password);
         user.setPassword(password);
         userService.create(user);
-        return ApiResp.ok("创建成功");
+        return Response.ok("创建成功");
     }
 }

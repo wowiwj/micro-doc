@@ -6,58 +6,56 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.ResponseEntity;
 
-import java.util.ArrayList;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApiResp {
+public class Response {
 
     private Integer status = 200;
     private Object message = "ok";
     private Object data = new int[0];
 
-    public static ApiResp init() {
-        return new ApiResp();
+    public static Response init() {
+        return new Response();
     }
 
-    public ApiResp status(int status) {
+    public Response status(int status) {
         this.status = status;
         return this;
     }
 
-    public ApiResp message(Object message) {
+    public Response message(Object message) {
         this.message = message;
         return this;
     }
 
-    public ApiResp data(Object data) {
+    public Response data(Object data) {
         this.data = data;
         return this;
     }
 
-    public ResponseEntity<ApiResp> build() {
+    public ResponseEntity<Response> build() {
         return ResponseEntity.status(this.status).body(this);
     }
 
 
-    public static ResponseEntity<ApiResp> ok(Object message, Object data) {
-        return ApiResp.init().message(message).data(data).build();
+    public static ResponseEntity<Response> ok(Object message, Object data) {
+        return Response.init().message(message).data(data).build();
     }
 
-    public static ResponseEntity<ApiResp> ok(Object message) {
-        return ApiResp.init().message(message).build();
+    public static ResponseEntity<Response> ok(Object message) {
+        return Response.init().message(message).build();
     }
 
-    public static ResponseEntity<ApiResp> body(Object data) {
-        return ApiResp.init().message("ok").data(data).build();
+    public static ResponseEntity<Response> body(Object data) {
+        return Response.init().message("ok").data(data).build();
     }
 
-    public static ResponseEntity<ApiResp> err(Object message) {
-        return ApiResp.init().status(400).message(message).build();
+    public static ResponseEntity<Response> err(Object message) {
+        return Response.init().status(400).message(message).build();
     }
 
-    public static ResponseEntity<ApiResp> err(Object message, int status) {
-        return ApiResp.init().status(status).status(status).message(message).build();
+    public static ResponseEntity<Response> err(Object message, int status) {
+        return Response.init().status(status).status(status).message(message).build();
     }
 }
