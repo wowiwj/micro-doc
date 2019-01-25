@@ -5,12 +5,17 @@ spring:
     username: postgres
     driver-class-name: org.postgresql.Driver
     password: docker
+  jackson:
+    time-zone: PRC
+
 mybatis:
   mapper-locations: classpath*:/mybatis/*Mapper.xml
   type-aliases-package: wangju.microdoc.domain
   type-handlers-package: wangju.microdoc.typehandler
 server:
   port: 9898
+
+
 
 # 分页插件配置
 pagehelper:
