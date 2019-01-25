@@ -14,20 +14,20 @@ public class PageDTO {
 
     private Object list;
 
-    private long total;
+    private long totalCount;
 
-    private int size;
+    private int pageSize;
 
-    private int limit;
+    private int pageLimit;
 
     private int totalPage;
 
     public static PageDTO transform(Page page) {
         PageDTO pageDTO = new PageDTO();
         pageDTO.list = page.getResult();
-        pageDTO.total = page.getTotal();
-        pageDTO.size = page.getPageSize();
-        pageDTO.limit = page.getPageNum();
+        pageDTO.totalCount = page.getTotal();
+        pageDTO.pageSize = page.getPageSize();
+        pageDTO.pageLimit = page.getPageNum();
         pageDTO.totalPage = page.getPages();
         return pageDTO;
     }
