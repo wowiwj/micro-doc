@@ -44,11 +44,11 @@ public class UserController {
 
     @JwtAuth
     @GetMapping("/{id}")
-    User one(@PathVariable Long id, HttpServletRequest request) {
+    ResponseEntity<Response> one(@PathVariable Long id, HttpServletRequest request) {
         request.getAttribute("currentUser");
         User user = userService.get(id);
         logger.info(String.valueOf(user.getPassword()));
-        return user;
+        return Response.body(user);
     }
 
     @PutMapping

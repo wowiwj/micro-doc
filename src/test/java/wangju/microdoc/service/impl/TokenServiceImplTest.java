@@ -42,6 +42,7 @@ public class TokenServiceImplTest {
         user.setId(1L);
         user.setPassword("123456");
         String token = tokenService.getToken(user);
+        log.info(token);
         assertTrue(token.length() > 0);
     }
 }
