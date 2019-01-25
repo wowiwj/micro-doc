@@ -10,7 +10,7 @@ create table "user"
   last_active_time timestamp
 );
 
-comment on table "user" is '用户表';
+-- comment on table "user" is '用户表';
 comment on column "user".username is '用户名';
 comment on column "user".password is '密码';
 comment on column "user".sex is '0未知，1 男，2 女';
@@ -33,7 +33,7 @@ create table "doc"
   update_time timestamp default CURRENT_TIMESTAMP not null
 );
 
-comment on table doc is '文档表';
+comment on table "doc" is '文档表';
 comment on column "doc".name is '文档名称';
 comment on column "doc".brief is '文档简介';
 comment on column "doc".header_url is '文档封面';
@@ -41,8 +41,8 @@ comment on column "doc".user_id is '文档创建用户';
 comment on column "doc".delete_at is '文档软删除时间';
 
 
-create unique index udx_doc_name on doc (name);
-create index idx_doc_user_id on doc (user_id);
+create unique index udx_doc_name on "doc" (name);
+create index idx_doc_user_id on "doc" (user_id);
 
 
 
