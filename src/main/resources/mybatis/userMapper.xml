@@ -13,13 +13,15 @@
     </sql>
 
     <select id="get" parameterType="long" resultType="user">
-        select id, username, password, sex, bio
+        select
+        <include refid="base_column_list"/>
         from "user"
         where id = #{id}
     </select>
 
     <select id="getByName" parameterType="string" resultType="user">
-        select id, username, password, sex, bio
+        select
+        <include refid="base_column_list"/>
         from "user"
         where username = #{username}
     </select>
