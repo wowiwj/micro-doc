@@ -1,11 +1,16 @@
 package wangju.microdoc.service;
 
+
+import com.github.pagehelper.Page;
 import wangju.microdoc.domain.User;
 
 public interface UserService {
-    public User get(long id);
+    User get(long id);
 
-    public User get(String username);
+    User get(String username);
 
-    public int create(User user);
+    int create(User user);
+
+    Page<User> page(int page,int size);
+
 }

@@ -4,6 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="wangju.microdoc.domain.UserRepository">
 
+    <sql id="base_column_list">
+        id,
+        username,
+        password,
+        sex,
+        bio
+    </sql>
+
     <select id="get" parameterType="long" resultType="user">
         select id, username, password, sex, bio
         from "user"
@@ -14,6 +22,12 @@
         select id, username, password, sex, bio
         from "user"
         where username = #{username}
+    </select>
+
+    <select id="all" resultType="wangju.microdoc.domain.User">
+        select
+        <include refid="base_column_list"/>
+        from "user"
     </select>
 
     <insert id="create" parameterType="wangju.microdoc.domain.User">

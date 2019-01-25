@@ -1,5 +1,7 @@
 package wangju.microdoc.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import wangju.microdoc.domain.User;
@@ -30,4 +32,12 @@ public class UserServiceImpl implements UserService {
     public int create(User user) {
         return userRepository.create(user);
     }
+
+    @Override
+    public Page<User> page(int page, int size) {
+        PageHelper.startPage(page,size);
+        return userRepository.all();
+    }
+
+
 }
