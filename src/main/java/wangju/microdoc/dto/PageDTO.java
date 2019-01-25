@@ -7,7 +7,7 @@ import com.github.pagehelper.Page;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
 
-@Alias("user")
+
 @Data
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class PageDTO {
