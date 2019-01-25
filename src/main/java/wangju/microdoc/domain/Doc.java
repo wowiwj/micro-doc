@@ -20,7 +20,6 @@ public class Doc {
     private String headerUrl;
     private Long userId;
     private Timestamp deleteTime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp createTime;
     private Timestamp updateTime;
 }
