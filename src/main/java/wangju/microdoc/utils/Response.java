@@ -58,10 +58,10 @@ public class Response {
     }
 
     public static ResponseEntity<Response> err(Object message, int status) {
-        return Response.init().status(status).status(status).message(message).build();
+        return Response.init().status(status).message(message).build();
     }
 
-    protected Object format(Object data) {
+    private Object format(Object data) {
         if (data instanceof Page) {
             JSONObject json = new JSONObject();
             json.put("content", data);
