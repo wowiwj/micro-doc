@@ -1,6 +1,8 @@
 package wangju.microdoc.utils;
 
 
+import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.Page;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +32,7 @@ public class Response {
     }
 
     public Response data(Object data) {
-        this.data = data;
+        this.data = this.format(data);
         return this;
     }
 
@@ -57,5 +59,18 @@ public class Response {
 
     public static ResponseEntity<Response> err(Object message, int status) {
         return Response.init().status(status).status(status).message(message).build();
+    }
+
+    protected Object format(Object data) {
+        if (data instanceof Page) {
+            JSONObject json = new JSONObject();
+            json.put("content", data);
+            json.put("total", ((Page) data).getTotal());
+            json.put("size", ((Page) data).getPageSize());
+            json.put("limit", ((Page) data).getPageNum());
+            json.put("pages",((Page) data).getPages());
+            return json;
+        }
+        return data;
     }
 }

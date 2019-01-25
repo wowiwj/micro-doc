@@ -2,8 +2,9 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/micro_doc
-    username: wangju
+    username: postgres
     driver-class-name: org.postgresql.Driver
+    password: docker
 mybatis:
   mapper-locations: classpath*:/mybatis/*Mapper.xml
   type-aliases-package: wangju.microdoc.domain
@@ -19,5 +20,5 @@ pagehelper:
   # 分页合理化参数，默认值为false。当该参数设置为 true 时，pageNum<=0 时会查询第一页， pageNum>pages（超过总数时），会查询最后一页
   reasonable: true
   support-methods-arguments: true
-  params: pageNum=pageNum;pageSize=pageSize;count=countSql;reasonable=reasonable;pageSizeZero=pageSizeZero
+  params: pageNum=page_num;pageSize=pageSize;count=countSql;reasonable=reasonable;pageSizeZero=pageSizeZero
 
