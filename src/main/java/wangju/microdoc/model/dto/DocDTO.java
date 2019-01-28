@@ -11,7 +11,6 @@ import java.sql.Timestamp;
 @Data
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class DocDTO {
-
     private Long id;
     private String name;
     private String brief;
@@ -20,9 +19,4 @@ public class DocDTO {
     private Timestamp deleteTime;
     private Timestamp createTime;
     private Timestamp updateTime;
-
-    public static DocDTO transform(Doc doc) {
-        return new DocDTO();
-    }
-
 }

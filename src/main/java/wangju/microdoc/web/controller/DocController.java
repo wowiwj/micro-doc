@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import wangju.microdoc.convert.impl.Doc2DocVO;
 import wangju.microdoc.model.domain.Doc;
+import wangju.microdoc.model.dto.DocDTO;
 import wangju.microdoc.model.vo.DocVO;
 import wangju.microdoc.service.DocService;
 import wangju.microdoc.utils.ResultJson;
@@ -32,7 +33,7 @@ public class DocController {
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "limit", defaultValue = "20") int limit
     ) {
-        Page<DocVO> docs = docService.page(page, limit);
+        Page<DocDTO> docs = docService.page(page, limit);
         return ResultJson.body(docs);
     }
 }

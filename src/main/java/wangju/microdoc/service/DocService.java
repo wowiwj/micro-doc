@@ -1,8 +1,8 @@
 package wangju.microdoc.service;
 
 import com.github.pagehelper.Page;
-import wangju.microdoc.model.vo.DocVO;
+import wangju.microdoc.model.dto.DocDTO;
 
 public interface DocService {
-    Page<DocVO> page(int page, int size);
+    Page<DocDTO> page(int page, int size);
 }

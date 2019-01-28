@@ -4,26 +4,26 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import wangju.microdoc.convert.impl.Doc2DocVO;
+import wangju.microdoc.convert.impl.Doc2DocDTO;
 import wangju.microdoc.model.domain.DocRepository;
-import wangju.microdoc.model.vo.DocVO;
+import wangju.microdoc.model.dto.DocDTO;
 import wangju.microdoc.service.DocService;
 
 @Service
 public class DocServiceImpl implements DocService {
 
     private final DocRepository docRepository;
-    private final Doc2DocVO doc2DocVO;
+    private final Doc2DocDTO doc2DocDTO;
 
     @Autowired
-    public DocServiceImpl(DocRepository docRepository,Doc2DocVO doc2DocVO) {
+    public DocServiceImpl(DocRepository docRepository,Doc2DocDTO doc2DocDTO) {
         this.docRepository = docRepository;
-        this.doc2DocVO = doc2DocVO;
+        this.doc2DocDTO = doc2DocDTO;
     }
 
     @Override
-    public Page<DocVO> page(int page, int size) {
+    public Page<DocDTO> page(int page, int size) {
         PageHelper.startPage(page,size);
-        return doc2DocVO.convertPage(docRepository.all());
+        return doc2DocDTO.convertPage(docRepository.all());
     }
 }
