@@ -1,28 +1,20 @@
-package wangju.microdoc.model.dto;
+package wangju.microdoc.model.vo;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
-import wangju.microdoc.model.domain.Doc;
-import wangju.microdoc.model.domain.User;
 
 import java.sql.Timestamp;
 
 @Data
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class DocDTO {
-
+public class DocVO {
     private Long id;
     private String name;
     private String brief;
     private String headerUrl;
-    private User user;
+    private UserVO user;
     private Timestamp deleteTime;
     private Timestamp createTime;
     private Timestamp updateTime;
-
-    public static DocDTO transform(Doc doc) {
-        return new DocDTO();
-    }
-
 }

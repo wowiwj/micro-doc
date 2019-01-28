@@ -45,8 +45,8 @@ public class DocControllerTest {
         result = mvc.perform(
                 MockMvcRequestBuilders.get("/docs")
         ).andReturn();
-
-        assertEquals(200, result.getResponse().getStatus());
         log.info(result.getResponse().getContentAsString());
+        assertEquals(200, result.getResponse().getStatus());
+
     }
 }
