@@ -1,4 +1,4 @@
-package wangju.microdoc.web;
+package wangju.microdoc.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.java.Log;
@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import wangju.microdoc.domain.User;
+import wangju.microdoc.model.domain.User;
 import wangju.microdoc.exception.UnauthorizedException;
 import wangju.microdoc.service.AuthService;
 import wangju.microdoc.service.TokenService;
 import wangju.microdoc.service.UserService;
-import wangju.microdoc.utils.Response;
+import wangju.microdoc.utils.ResultJson;
 import wangju.microdoc.validators.LoginForm;
 import wangju.microdoc.validators.RegisterForm;
 
@@ -49,7 +49,7 @@ public class AuthController {
         JSONObject data = new JSONObject();
         data.put("token", token);
         data.put("user", user);
-        return Response.body(data);
+        return ResultJson.body(data);
     }
 
     @PostMapping("/register")
@@ -58,7 +58,7 @@ public class AuthController {
         String username = registerForm.getUsername();
         User user = userService.get(username);
         if (user != null){
-            return Response.err("用户已存在");
+            return ResultJson.err("用户已存在");
         }
         user = new User();
         user.setUsername(username);
@@ -66,6 +66,6 @@ public class AuthController {
         log.info(password);
         user.setPassword(password);
         userService.create(user);
-        return Response.ok("创建成功");
+        return ResultJson.ok("创建成功");
     }
 }

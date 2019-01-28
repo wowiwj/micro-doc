@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="wangju.microdoc.domain.DocRepository">
+<mapper namespace="wangju.microdoc.model.domain.DocRepository">
 
     <sql id="base_column_list">
         id,
@@ -30,7 +30,7 @@
         updateTime
     </sql>
 
-    <select id="all" resultType="wangju.microdoc.domain.Doc">
+    <select id="all" resultType="wangju.microdoc.model.domain.Doc">
         select
         <include refid="base_column_list"/>
         from "doc"

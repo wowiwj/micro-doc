@@ -1,4 +1,4 @@
-package wangju.microdoc.web;
+package wangju.microdoc.web.controller;
 
 import com.github.pagehelper.Page;
 import org.slf4j.Logger;
@@ -8,9 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import wangju.microdoc.annotation.JwtAuth;
 import wangju.microdoc.annotation.PassToken;
-import wangju.microdoc.domain.User;
+import wangju.microdoc.model.domain.User;
 import wangju.microdoc.service.UserService;
-import wangju.microdoc.utils.Response;
+import wangju.microdoc.utils.ResultJson;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -29,12 +29,12 @@ public class UserController {
 
     @GetMapping
     @PassToken
-    ResponseEntity<Response> all(
+    ResponseEntity<ResultJson> all(
             @RequestParam(value = "page", defaultValue = "1") int page,
             @RequestParam(value = "limit", defaultValue = "20") int limit
     ) {
         Page<User> users = userService.page(page,limit);
-        return Response.body(users);
+        return ResultJson.body(users);
     }
 
     @PostMapping
@@ -44,11 +44,11 @@ public class UserController {
 
     @JwtAuth
     @GetMapping("/{id}")
-    ResponseEntity<Response> one(@PathVariable Long id, HttpServletRequest request) {
+    ResponseEntity<ResultJson> one(@PathVariable Long id, HttpServletRequest request) {
         request.getAttribute("currentUser");
         User user = userService.get(id);
         logger.info(String.valueOf(user.getPassword()));
-        return Response.body(user);
+        return ResultJson.body(user);
     }
 
     @PutMapping

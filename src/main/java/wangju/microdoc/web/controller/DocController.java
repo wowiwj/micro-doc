@@ -1,4 +1,4 @@
-package wangju.microdoc.web;
+package wangju.microdoc.web.controller;
 
 import com.github.pagehelper.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import wangju.microdoc.domain.Doc;
+import wangju.microdoc.model.domain.Doc;
 import wangju.microdoc.service.DocService;
-import wangju.microdoc.utils.Response;
+import wangju.microdoc.utils.ResultJson;
 
 @RestController
 @RequestMapping("/docs")
@@ -27,6 +27,6 @@ public class DocController {
             @RequestParam(value = "limit", defaultValue = "20") int limit
     ) {
         Page<Doc> docs = docService.page(page, limit);
-        return Response.body(docs);
+        return ResultJson.body(docs);
     }
 }

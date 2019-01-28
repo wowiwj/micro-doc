@@ -4,8 +4,8 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import wangju.microdoc.domain.Doc;
-import wangju.microdoc.domain.DocRepository;
+import wangju.microdoc.model.domain.Doc;
+import wangju.microdoc.model.domain.DocRepository;
 import wangju.microdoc.service.DocService;
 
 @Service

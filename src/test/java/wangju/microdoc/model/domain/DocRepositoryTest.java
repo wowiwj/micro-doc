@@ -1,4 +1,4 @@
-package wangju.microdoc.domain;
+package wangju.microdoc.model.domain;
 
 import lombok.extern.java.Log;
 import org.junit.Test;

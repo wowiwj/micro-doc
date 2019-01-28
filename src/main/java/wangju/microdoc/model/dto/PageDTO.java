@@ -1,11 +1,10 @@
-package wangju.microdoc.dto;
+package wangju.microdoc.model.dto;
 
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.github.pagehelper.Page;
 import lombok.Data;
-import org.apache.ibatis.type.Alias;
 
 
 @Data

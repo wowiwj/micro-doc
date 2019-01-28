@@ -1,6 +1,5 @@
-package wangju.microdoc.domain;
+package wangju.microdoc.model.domain;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -8,8 +7,6 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
 import wangju.microdoc.enumeration.SexEnum;
-
-import java.sql.Time;
 
 @Alias("user")
 @Data

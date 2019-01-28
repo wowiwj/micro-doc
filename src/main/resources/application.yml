@@ -11,7 +11,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath*:/mybatis/*Mapper.xml
-  type-aliases-package: wangju.microdoc.domain
+  type-aliases-package: wangju.microdoc.model.domain
   type-handlers-package: wangju.microdoc.typehandler
 server:
   port: 9898

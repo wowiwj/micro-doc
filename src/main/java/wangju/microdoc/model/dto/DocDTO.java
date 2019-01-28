@@ -1,11 +1,10 @@
-package wangju.microdoc.dto;
+package wangju.microdoc.model.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
-import org.apache.ibatis.type.Alias;
-import wangju.microdoc.domain.Doc;
-import wangju.microdoc.domain.User;
+import wangju.microdoc.model.domain.Doc;
+import wangju.microdoc.model.domain.User;
 
 import java.sql.Timestamp;
 

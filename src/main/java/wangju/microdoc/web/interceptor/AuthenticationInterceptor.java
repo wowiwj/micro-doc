@@ -1,4 +1,4 @@
-package wangju.microdoc.interceptor;
+package wangju.microdoc.web.interceptor;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -11,7 +11,7 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import wangju.microdoc.annotation.JwtAuth;
 import wangju.microdoc.annotation.PassToken;
-import wangju.microdoc.domain.User;
+import wangju.microdoc.model.domain.User;
 import wangju.microdoc.exception.UnauthorizedException;
 import wangju.microdoc.service.UserService;
 

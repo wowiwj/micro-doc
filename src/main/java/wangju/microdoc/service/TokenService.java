@@ -1,7 +1,6 @@
 package wangju.microdoc.service;
 
-import org.springframework.stereotype.Service;
-import wangju.microdoc.domain.User;
+import wangju.microdoc.model.domain.User;
 
 
 public interface TokenService {

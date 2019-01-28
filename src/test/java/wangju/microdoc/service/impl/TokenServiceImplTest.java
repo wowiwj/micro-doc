@@ -1,7 +1,6 @@
 package wangju.microdoc.service.impl;
 
 import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +10,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
-import wangju.microdoc.domain.User;
+import wangju.microdoc.model.domain.User;
 
 import static org.junit.Assert.*;
 

@@ -2,7 +2,7 @@ package wangju.microdoc.service;
 
 
 import com.github.pagehelper.Page;
-import wangju.microdoc.domain.User;
+import wangju.microdoc.model.domain.User;
 
 public interface UserService {
     User get(long id);

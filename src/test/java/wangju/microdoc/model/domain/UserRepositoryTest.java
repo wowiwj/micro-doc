@@ -1,4 +1,4 @@
-package wangju.microdoc.domain;
+package wangju.microdoc.model.domain;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

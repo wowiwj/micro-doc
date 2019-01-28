@@ -1,13 +1,10 @@
-package wangju.microdoc.domain;
+package wangju.microdoc.model.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 
 @Alias("doc")

@@ -1,4 +1,4 @@
-package wangju.microdoc.domain;
+package wangju.microdoc.model.domain;
 
 import com.github.pagehelper.Page;
 import org.springframework.stereotype.Repository;
