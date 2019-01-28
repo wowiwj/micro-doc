@@ -30,7 +30,7 @@ public class DocController {
 
     @GetMapping
     public Object all(
-            @RequestParam(value = "page", defaultValue = "1") int page,
+            @RequestParam( value = "page", defaultValue = "1") int page,
             @RequestParam(value = "limit", defaultValue = "20") int limit
     ) {
         Page<DocDTO> docs = docService.page(page, limit);

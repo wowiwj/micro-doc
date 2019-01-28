@@ -5,6 +5,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import wangju.microdoc.exception.ApiException;
 import wangju.microdoc.exception.UnauthorizedException;
 import wangju.microdoc.utils.ResultJson;
 
@@ -23,6 +24,11 @@ public class GlobalExceptionHandler {
         return ResultJson.err(msg);
     }
 
+    @ExceptionHandler(ApiException.class)
+    public Object handleApiException(ApiException e) {
+        return ResultJson.err(e.getMessage());
+    }
+
     @ExceptionHandler(UnauthorizedException.class)
     public Object handleUnAuthorizedException() {
         return ResultJson.err("未授权", 401);
@@ -39,7 +45,7 @@ public class GlobalExceptionHandler {
             message += fieldError.getDefaultMessage();
             return message;
         }).toArray();
-        return ResultJson.err(messageErr,422);
+        return ResultJson.err(messageErr, 422);
     }
 
 }
