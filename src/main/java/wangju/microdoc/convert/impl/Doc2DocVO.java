@@ -3,12 +3,10 @@ package wangju.microdoc.convert.impl;
 import lombok.extern.java.Log;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import wangju.microdoc.convert.Convert;
 import wangju.microdoc.model.domain.Doc;
 import wangju.microdoc.model.domain.User;
-import wangju.microdoc.model.dto.DocDTO;
 import wangju.microdoc.model.vo.DocVO;
 import wangju.microdoc.service.UserService;
 

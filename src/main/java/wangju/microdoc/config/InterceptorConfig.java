@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import wangju.microdoc.web.interceptor.ApiResponseInterceptor;
 import wangju.microdoc.web.interceptor.AuthenticationInterceptor;
 
 @Configuration
@@ -18,9 +19,10 @@ public class InterceptorConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public AuthenticationInterceptor authenticationInterceptor(){
+    public AuthenticationInterceptor authenticationInterceptor() {
         return new AuthenticationInterceptor();
     }
+
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {

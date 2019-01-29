@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import wangju.microdoc.model.dto.PageDTO;
+import wangju.microdoc.model.vo.PageVo;
 
 @Data
 @AllArgsConstructor
@@ -63,7 +63,7 @@ public class ResultJson {
 
     private Object format(Object data) {
         if (data instanceof Page) {
-            return PageDTO.transform((Page) data);
+            return PageVo.transform((Page) data);
         }
         return data;
     }

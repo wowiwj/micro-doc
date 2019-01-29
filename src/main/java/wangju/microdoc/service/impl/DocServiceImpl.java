@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import wangju.microdoc.convert.impl.Doc2DocDTO;
 import wangju.microdoc.model.domain.DocRepository;
-import wangju.microdoc.model.dto.DocDTO;
+import wangju.microdoc.model.dto.DocDto;
 import wangju.microdoc.service.DocService;
 
 @Service
@@ -22,7 +22,7 @@ public class DocServiceImpl implements DocService {
     }
 
     @Override
-    public Page<DocDTO> page(int page, int size) {
+    public Page<DocDto> page(int page, int size) {
         PageHelper.startPage(page,size);
         return doc2DocDTO.convertPage(docRepository.all());
     }
