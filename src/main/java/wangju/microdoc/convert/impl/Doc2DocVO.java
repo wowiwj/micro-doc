@@ -7,13 +7,13 @@ import org.springframework.stereotype.Component;
 import wangju.microdoc.convert.Convert;
 import wangju.microdoc.model.domain.Doc;
 import wangju.microdoc.model.domain.User;
-import wangju.microdoc.model.vo.DocVO;
+import wangju.microdoc.model.vo.DocVo;
 import wangju.microdoc.service.UserService;
 
 
 @Log
 @Component
-public class Doc2DocVO implements Convert<Doc, DocVO> {
+public class Doc2DocVO implements Convert<Doc, DocVo> {
 
     private final
     UserService userService;
@@ -24,8 +24,8 @@ public class Doc2DocVO implements Convert<Doc, DocVO> {
     }
 
     @Override
-    public DocVO apply(Doc doc) {
-        DocVO vo = new DocVO();
+    public DocVo apply(Doc doc) {
+        DocVo vo = new DocVo();
         BeanUtils.copyProperties(doc, vo);
         log.info("user id = " + doc.getUserId());
         log.info(userService.toString());

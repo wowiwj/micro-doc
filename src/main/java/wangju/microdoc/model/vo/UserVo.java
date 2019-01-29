@@ -9,7 +9,7 @@ import wangju.microdoc.enumeration.SexEnum;
 
 @Data
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
-public class UserVO {
+public class UserVo {
     private Long id;
     private String username;
     private SexEnum sex;
